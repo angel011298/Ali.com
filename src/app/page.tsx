@@ -40,39 +40,11 @@ const FAQS = [
   }
 ];
 
-function FAQSection({ openIdx, setOpenIdx }) {
-  return (
-    <section id="faq" className="py-20 px-6 bg-white border-t border-gray-100">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex items-center gap-3 mb-8">
-          <ShieldCheck size={32} className="text-[#1976D2]" />
-          <h2 className="text-2xl md:text-3xl font-black text-blue-900">Seguridad y Confianza</h2>
-        </div>
-        <div className="space-y-4">
-          {FAQS.map((faq, idx) => (
-            <div key={idx} className="border border-gray-100 rounded-xl p-4 bg-blue-50/30 transition-all">
-              <button onClick={() => setOpenIdx(openIdx === idx ? null : idx)} className="w-full flex items-center justify-between text-left">
-                <span className="font-semibold text-[#1976D2]">{faq.question}</span>
-                {openIdx === idx ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-              </button>
-              {openIdx === idx && <p className="text-gray-700 text-sm mt-3 leading-relaxed">{faq.answer}</p>}
-            </div>
-          </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export default function Home() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openIdx, setOpenIdx] = useState(null);
   const [enviado, setEnviado] = useState(false);
-  const [form, setForm] = useState({ nombre: "", email: "", telefono: "", mensaje: "" });
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const whatsappLink = `https://wa.me/${CONTACT_INFO.phoneRaw}?text=Hola%20Enf.%20Alicia,%20solicito%20información`;
 
@@ -88,9 +60,9 @@ export default function Home() {
             </div>
           </div>
           <ul className="hidden md:flex items-center gap-8">
-            <li><a href="#sobre-mi" className="hover:text-blue-600 font-medium">Sobre Alicia</a></li>
-            <li><a href="#servicios" className="hover:text-blue-600 font-medium">Servicios</a></li>
-            <li><a href="#contacto" className={theme.button}>Agendar Cita</a></li>
+            <li><a href="#sobre-mi" className="hover:text-blue-600 font-medium text-sm">Sobre Alicia</a></li>
+            <li><a href="#faq" className="hover:text-blue-600 font-medium text-sm">Seguridad</a></li>
+            <li><a href="#contacto" className={theme.button}>Contacto</a></li>
           </ul>
           <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -99,7 +71,7 @@ export default function Home() {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t p-6 flex flex-col gap-4 shadow-lg text-center font-bold">
             <a href="#sobre-mi" onClick={() => setIsMenuOpen(false)}>Sobre Alicia</a>
-            <a href="#servicios" onClick={() => setIsMenuOpen(false)}>Servicios</a>
+            <a href="#faq" onClick={() => setIsMenuOpen(false)}>Seguridad</a>
             <a href="#contacto" onClick={() => setIsMenuOpen(false)} className="text-blue-600">Contacto</a>
           </div>
         )}
@@ -114,13 +86,15 @@ export default function Home() {
             <h1 className="text-4xl md:text-6xl font-black text-blue-900 mb-6 leading-tight">
               Cuidados de Salud con <span className="text-blue-600">Calidez y Profesionalismo</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Atención hospitalaria de primer nivel por la <strong>Enf. Alicia Rentería</strong> en la comodidad de su hogar en CDMX y ZMVM.
             </p>
-            <a href={whatsappLink} className={theme.button}>Contactar ahora</a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <a href={whatsappLink} className={theme.button}>Contactar ahora</a>
+            </div>
           </div>
           <div className="relative flex justify-center">
-            <div className="absolute inset-0 bg-blue-200 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+            <div className="absolute inset-0 bg-blue-200 rounded-full filter blur-3xl opacity-20"></div>
             <img 
               src="/alicia.jpg" 
               className="relative z-10 w-full max-w-md rounded-[2.5rem] shadow-2xl border-8 border-white object-cover aspect-[4/5]"
@@ -135,19 +109,37 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <Heart className="mx-auto mb-6 text-blue-300" size={40} />
           <h2 className="text-2xl md:text-3xl font-light italic leading-relaxed">
-            "Mi formación en UNITEC y mi compromiso con el Valle de México me impulsan a cuidar la tranquilidad de toda la familia."
+            "Mi formación en UNITEC y mi compromiso con el Valle de México me impulsan a cuidar la salud y tranquilidad de su familia."
           </h2>
           <p className="mt-6 font-bold tracking-widest uppercase text-sm text-blue-200">— Enf. Alicia Rentería</p>
         </div>
       </section>
 
-      <FAQSection openIdx={openIdx} setOpenIdx={setOpenIdx} />
+      <section id="faq" className="py-20 px-6 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center gap-3 mb-8">
+            <ShieldCheck size={32} className="text-[#1976D2]" />
+            <h2 className="text-2xl md:text-3xl font-black text-blue-900">Seguridad y Confianza</h2>
+          </div>
+          <div className="space-y-4">
+            {FAQS.map((faq, idx) => (
+              <div key={idx} className="border border-gray-100 rounded-xl p-4 bg-blue-50/30">
+                <button onClick={() => setOpenIdx(openIdx === idx ? null : idx)} className="w-full flex items-center justify-between text-left">
+                  <span className="font-semibold text-[#1976D2]">{faq.question}</span>
+                  {openIdx === idx ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                </button>
+                {openIdx === idx && <p className="text-gray-700 text-sm mt-3">{faq.answer}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section id="contacto" className="py-20 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-gray-100">
           <div className="bg-[#1976D2] p-12 text-white md:w-1/3">
             <h3 className="text-2xl font-bold mb-6">Contáctame</h3>
-            <p className="text-blue-100 mb-8 font-medium">Atención en CDMX y ZMVM</p>
+            <p className="text-blue-100 mb-8">Atención en CDMX y ZMVM</p>
             <div className="space-y-6">
               <div className="flex items-center gap-3"><Phone size={20} /><span>{CONTACT_INFO.phone}</span></div>
               <div className="flex items-center gap-3"><Mail size={20} /><span className="text-xs break-all">{CONTACT_INFO.email}</span></div>
@@ -157,13 +149,14 @@ export default function Home() {
             {enviado ? (
               <div className="text-center py-10">
                 <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold">¡Mensaje Enviado!</h3>
+                <h3 className="text-2xl font-bold">Solicitud Enviada</h3>
+                <p className="text-gray-600">Alicia se comunicará con usted en breve.</p>
               </div>
             ) : (
               <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setEnviado(true); }}>
                 <input type="text" placeholder="Nombre completo" required className="w-full p-4 bg-gray-50 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" />
                 <textarea placeholder="¿Cómo puedo ayudarle?" rows={3} className="w-full p-4 bg-gray-50 rounded-xl outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                <button type="submit" className="w-full bg-[#0D47A1] text-white font-bold py-4 rounded-xl shadow-lg hover:bg-blue-800 transition-all">Enviar Solicitud</button>
+                <button type="submit" className="w-full bg-[#0D47A1] text-white font-bold py-4 rounded-xl">Enviar Solicitud</button>
               </form>
             )}
           </div>
@@ -179,10 +172,8 @@ export default function Home() {
 
       {isPrivacyOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-8 shadow-2xl relative">
-            <button onClick={() => setIsPrivacyOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-              <X size={24} />
-            </button>
+          <div className="bg-white rounded-2xl max-w-lg w-full p-8 shadow-2xl relative text-center">
+            <button onClick={() => setIsPrivacyOpen(false)} className="absolute top-4 right-4 text-gray-400"><X /></button>
             <h3 className="text-xl font-bold text-blue-900 mb-4">Aviso de Privacidad</h3>
             <p className="text-xs text-gray-600">Sus datos personales serán tratados bajo estricta confidencialidad por Alicia Rentería conforme a la LFPDPPP.</p>
             <button onClick={() => setIsPrivacyOpen(false)} className="w-full mt-6 bg-blue-600 text-white font-bold py-3 rounded-xl">Entendido</button>
@@ -191,5 +182,4 @@ export default function Home() {
       )}
     </div>
   );
-}/ /   D e s p l i e g u e   p � b l i c o  
- 
+}
