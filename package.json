@@ -17,6 +17,7 @@
       "tailwind-merge": "latest"
     },
     "devDependencies": {
+      "@tailwindcss/postcss": "latest",
       "autoprefixer": "latest",
       "postcss": "latest",
       "tailwindcss": "latest",
