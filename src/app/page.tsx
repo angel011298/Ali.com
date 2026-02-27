@@ -43,7 +43,7 @@ const FAQS = [
 export default function Home() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openIdx, setOpenIdx] = useState(null);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [enviado, setEnviado] = useState(false);
 
   const whatsappLink = `https://wa.me/${CONTACT_INFO.phoneRaw}?text=Hola%20Enf.%20Alicia,%20solicito%20información`;
@@ -118,17 +118,20 @@ export default function Home() {
       <section id="faq" className="py-20 px-6 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
-            <ShieldCheck size={32} className="text-[#1976D2]" />
+            <ShieldCheck size={32} className={theme.primaryText} />
             <h2 className="text-2xl md:text-3xl font-black text-blue-900">Seguridad y Confianza</h2>
           </div>
           <div className="space-y-4">
             {FAQS.map((faq, idx) => (
-              <div key={idx} className="border border-gray-100 rounded-xl p-4 bg-blue-50/30">
-                <button onClick={() => setOpenIdx(openIdx === idx ? null : idx)} className="w-full flex items-center justify-between text-left">
+              <div key={idx} className="border border-gray-100 rounded-xl p-4 bg-blue-50/30 transition-all">
+                <button 
+                  onClick={() => setOpenIdx(openIdx === idx ? null : idx)} 
+                  className="w-full flex items-center justify-between text-left"
+                >
                   <span className="font-semibold text-[#1976D2]">{faq.question}</span>
                   {openIdx === idx ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                 </button>
-                {openIdx === idx && <p className="text-gray-700 text-sm mt-3">{faq.answer}</p>}
+                {openIdx === idx && <p className="text-gray-700 text-sm mt-3 leading-relaxed">{faq.answer}</p>}
               </div>
             ))}
           </div>
@@ -156,7 +159,7 @@ export default function Home() {
               <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setEnviado(true); }}>
                 <input type="text" placeholder="Nombre completo" required className="w-full p-4 bg-gray-50 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" />
                 <textarea placeholder="¿Cómo puedo ayudarle?" rows={3} className="w-full p-4 bg-gray-50 rounded-xl outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                <button type="submit" className="w-full bg-[#0D47A1] text-white font-bold py-4 rounded-xl">Enviar Solicitud</button>
+                <button type="submit" className="w-full bg-[#0D47A1] text-white font-bold py-4 rounded-xl shadow-lg hover:bg-blue-800 transition-all">Enviar Solicitud</button>
               </form>
             )}
           </div>
@@ -173,10 +176,12 @@ export default function Home() {
       {isPrivacyOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="bg-white rounded-2xl max-w-lg w-full p-8 shadow-2xl relative text-center">
-            <button onClick={() => setIsPrivacyOpen(false)} className="absolute top-4 right-4 text-gray-400"><X /></button>
+            <button onClick={() => setIsPrivacyOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+              <X size={24} />
+            </button>
             <h3 className="text-xl font-bold text-blue-900 mb-4">Aviso de Privacidad</h3>
             <p className="text-xs text-gray-600">Sus datos personales serán tratados bajo estricta confidencialidad por Alicia Rentería conforme a la LFPDPPP.</p>
-            <button onClick={() => setIsPrivacyOpen(false)} className="w-full mt-6 bg-blue-600 text-white font-bold py-3 rounded-xl">Entendido</button>
+            <button onClick={() => setIsPrivacyOpen(false)} className="w-full mt-6 bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors">Entendido</button>
           </div>
         </div>
       )}
