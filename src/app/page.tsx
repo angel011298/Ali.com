@@ -4,7 +4,7 @@ import {
   Stethoscope, UserCheck, Users, CheckCircle, Phone, Mail, 
   MessageSquare, Facebook, Instagram, Linkedin, Menu, X, Award, 
   Heart, ShieldCheck, ChevronDown, ChevronUp, Droplet, Baby, ArrowRight,
-  Activity, Syringe, Zap, Pill, Clock, ClipboardList, BriefcaseMedical
+  Activity, Syringe, Zap, Pill, Clock, ClipboardList, BriefcaseMedical, MapPin, Video
 } from "lucide-react";
 
 // --- ANIMACIONES SCROLL FLUIDAS ---
@@ -63,7 +63,7 @@ const CONTACT_INFO = {
   username: "Curae.com"
 };
 
-// --- BASE DE DATOS DE SERVICIOS (CATÁLOGO EXTENDIDO) ---
+// --- BASE DE DATOS DE SERVICIOS (CATÁLOGO EXTENDIDO + CONSULTORÍA) ---
 const SERVICIOS_DATA = [
   {
     id: "basicos",
@@ -112,27 +112,41 @@ const SERVICIOS_DATA = [
     title: "Sueroterapia a Domicilio",
     icon: <Droplet size={24} />,
     shortDesc: "Revitaliza tu cuerpo desde casa. Absorción al 100% directa al torrente sanguíneo.",
-    img: "https://images.unsplash.com/photo-1631815587646-b85a1bb02246?q=80&w=800",
+    img: "https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=800",
     marketingCopy: "El secreto de la medicina moderna para una recuperación inmediata. Al evitar el sistema digestivo, tu cuerpo absorbe vitaminas, minerales y medicamentos al 100%. Olvídate de las salas de espera; nosotros llevamos la clínica a tu sofá.",
     subServices: [
       { name: "Suero Resaca Relief (Cruda)", price: "$1,300 + IVA", desc: "Hidratación profunda, protector gástrico y analgésico potente. Alivio en 45 minutos.", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=400" },
-      { name: "Inmuno-Boost (Vitamina C y Zinc)", price: "$1,200 + IVA", desc: "Escudo protector contra virus y fatiga. Sube tus defensas drásticamente.", img: "https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=400" },
+      { name: "Inmuno-Boost (Vitamina C y Zinc)", price: "$1,200 + IVA", desc: "Escudo protector contra virus y fatiga. Sube tus defensas drásticamente.", img: "https://images.unsplash.com/photo-1583324113626-70df0f4deaab?q=80&w=400" },
       { name: "Detox & Glow (Glutatión)", price: "$1,500 + IVA", desc: "El antioxidante maestro. Limpia el hígado, oxigena la sangre y da luminosidad a la piel.", img: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=400" },
       { name: "Hidratación Plus / Canalización", price: "$800 + IVA", desc: "Reposición rápida de líquidos por deshidratación o infecciones estomacales.", img: "https://images.unsplash.com/photo-1543363136-3fdb62e11be5?q=80&w=400" }
     ]
   },
   {
+    id: "consultoria",
+    title: "Consultoría y Resolución de Dudas",
+    icon: <Video size={24} />,
+    shortDesc: "Orientación experta presencial o virtual para resolver tus inquietudes médicas.",
+    img: "https://images.unsplash.com/photo-1537368910025-7028a609b139?q=80&w=800",
+    marketingCopy: "La información médica puede ser abrumadora. Evita búsquedas peligrosas en internet y permítenos guiarte. Nuestros expertos resolverán cualquier duda sobre el cuidado, manejo de equipo o síntomas de tu familiar, dándote paz mental para tomar decisiones seguras.",
+    subServices: [
+      { name: "Asesoría en línea (Telemedicina)", price: "$300 + IVA", desc: "Videollamada para revisión de estudios, resolución de dudas y orientación médica primaria.", icon: <Video className="text-[#1976D2]" /> },
+      { name: "Visita de Valoración Inicial", price: "$500 + IVA", desc: "Evaluación física del paciente en casa para diseñar su plan de cuidados exacto.", icon: <Stethoscope className="text-[#1976D2]" /> },
+      { name: "Capacitación a Familiares", price: "$400 + IVA", desc: "Te enseñamos cómo usar tanques de oxígeno, movilizar al paciente y cambiar pañales correctamente.", icon: <Users className="text-[#1976D2]" /> },
+      { name: "Segunda Opinión de Cuidados", price: "$400 + IVA", desc: "Revisión objetiva de los tratamientos de enfermería actuales para optimizar la recuperación.", icon: <ClipboardList className="text-[#1976D2]" /> }
+    ]
+  },
+  {
     id: "gestion",
-    title: "Gestión y Consultoría de Salud",
+    title: "Gestión y Equipamiento Médico",
     icon: <ClipboardList size={24} />,
-    shortDesc: "Diseñamos el ecosistema de salud completo: planes de cuidado, insumos y enlace médico.",
+    shortDesc: "Diseñamos el ecosistema de salud: planes de cuidado, insumos y enlace médico.",
     img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800",
     marketingCopy: "No solo enviamos personal; gestionamos la salud integral. Actuamos como los directores de orquesta de la recuperación de tu familiar, educando y proveyendo todo lo necesario.",
     subServices: [
       { name: "Planes de Cuidado a Medida", price: "Incluido", desc: "Evaluación inicial por un supervisor para diseñar una bitácora de actividades personalizada.", icon: <ClipboardList className="text-[#1976D2]" /> },
-      { name: "Capacitación a Familiares", price: "Asesoría", desc: "Educación práctica sobre cómo movilizar al paciente y detectar signos de alerta.", icon: <Users className="text-[#1976D2]" /> },
       { name: "Enlace Médico Directo", price: "Incluido", desc: "Comunicación técnica con médicos tratantes para reportar evolución y ajustar tratamientos.", icon: <Phone className="text-[#1976D2]" /> },
-      { name: "Gestión de Insumos", price: "Cotización", desc: "Asesoría y suministro de camas de hospital, oxígeno, sillas de ruedas y material de curación.", icon: <ShieldCheck className="text-[#1976D2]" /> }
+      { name: "Renta de Equipo Médico", price: "Cotización", desc: "Gestión rápida de camas de hospital, concentradores de oxígeno, grúas y sillas de ruedas.", icon: <Activity className="text-[#1976D2]" /> },
+      { name: "Suministro de Material", price: "Cotización", desc: "Entrega a domicilio de gasas, jeringas, pañales, sueros y material de curación estéril.", icon: <ShieldCheck className="text-[#1976D2]" /> }
     ]
   },
   {
@@ -432,14 +446,14 @@ export default function Home() {
         </FadeInSection>
       </section>
 
-      {/* --- CONTACTO --- */}
+      {/* --- CONTACTO (FORMULARIO ACTUALIZADO) --- */}
       <section id="contacto" className="py-24 px-6 bg-gray-100">
         <FadeInSection delay={100} direction="up">
           <div className="max-w-5xl mx-auto bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-gray-200">
             {/* Form */}
             <div className="p-12 md:w-3/5">
               <h3 className="text-3xl font-black text-[#0D47A1] mb-2">Solicita una Cotización</h3>
-              <p className="text-gray-500 mb-8 text-sm">Respuesta rápida garantizada. Permítenos diseñar el plan de cuidado ideal.</p>
+              <p className="text-gray-500 mb-8 text-sm">Ingresa los datos del paciente para que nuestra coordinadora te envíe un presupuesto exacto.</p>
               
               {enviado ? (
                 <div className="text-center py-16 bg-green-50 rounded-3xl border border-green-100">
@@ -453,7 +467,30 @@ export default function Home() {
                     <input type="text" placeholder="Nombre completo" required className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#1976D2] transition-all" />
                     <input type="tel" placeholder="Teléfono / WhatsApp" required className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#1976D2] transition-all" />
                   </div>
-                  <textarea placeholder="¿En qué alcaldía te ubicas y qué servicio necesitas?" rows={4} required className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#1976D2] transition-all"></textarea>
+                  
+                  {/* NUEVOS CAMPOS: UBICACIÓN Y SERVICIO */}
+                  <div className="relative">
+                    <MapPin className="absolute left-4 top-4 text-gray-400" size={20} />
+                    <input type="text" placeholder="Dirección completa (Alcaldía, Colonia, CP)" required className="w-full p-4 pl-12 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#1976D2] transition-all" />
+                  </div>
+                  
+                  <div className="relative">
+                    <select required className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#1976D2] transition-all text-gray-600 appearance-none cursor-pointer">
+                      <option value="">Selecciona el servicio a cotizar...</option>
+                      <option value="Cuidados Básicos y Asistencia">Cuidados Básicos y Asistencia Diaria</option>
+                      <option value="Cuidados Clínicos (Inyecciones/Heridas)">Cuidados Clínicos (Inyecciones, Heridas, Sondas)</option>
+                      <option value="Servicios Especializados">Servicios Especializados (Post-operatorio, Geriatría)</option>
+                      <option value="Sueroterapia a Domicilio">Sueroterapia a Domicilio</option>
+                      <option value="Consultoria y Dudas">Consultoría y Resolución de Dudas Médicas</option>
+                      <option value="Modalidades de Cobertura (Turnos)">Modalidades de Cobertura (Turnos 8h/12h/24h)</option>
+                      <option value="Gestión e Insumos">Gestión Médica o Renta de Insumos</option>
+                      <option value="Otro">Otro servicio</option>
+                    </select>
+                    <ChevronDown className="absolute right-4 top-4 text-gray-400 pointer-events-none" size={20} />
+                  </div>
+
+                  <textarea placeholder="Cuéntanos brevemente el diagnóstico del paciente o lo que necesitas..." rows={3} required className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:ring-2 focus:ring-[#1976D2] transition-all"></textarea>
+                  
                   <button type="submit" className="w-full bg-[#0D47A1] text-white font-bold py-4 rounded-2xl shadow-lg hover:bg-[#1976D2] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
                     Enviar Solicitud Segura <ShieldCheck size={18}/>
                   </button>
