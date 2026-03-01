@@ -4,7 +4,7 @@ import {
   Stethoscope, UserCheck, Users, CheckCircle, Phone, Mail, 
   MessageSquare, Facebook, Instagram, Linkedin, Menu, X, Award, 
   Heart, ShieldCheck, ChevronDown, ChevronUp, Droplet, Baby, ArrowRight,
-  Activity, Syringe, Zap, Pill, Clock
+  Activity, Syringe, Zap, Pill, Clock, ClipboardList, BriefcaseMedical
 } from "lucide-react";
 
 // --- ANIMACIONES SCROLL FLUIDAS ---
@@ -63,15 +63,57 @@ const CONTACT_INFO = {
   username: "Curae.com"
 };
 
-// --- BASE DE DATOS DE SERVICIOS (MARKETING + PRECIOS) ---
+// --- BASE DE DATOS DE SERVICIOS (CATÁLOGO EXTENDIDO) ---
 const SERVICIOS_DATA = [
+  {
+    id: "basicos",
+    title: "Cuidados Básicos y Asistencia Diaria",
+    icon: <UserCheck size={24} />,
+    shortDesc: "Asistencia por cuidadores certificados bajo supervisión profesional para la vida diaria.",
+    img: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=800",
+    marketingCopy: "Transformamos las actividades diarias en momentos de confort. Ideal para pacientes que requieren apoyo constante, garantizando su higiene, nutrición y seguridad sin perder su dignidad.",
+    subServices: [
+      { name: "Higiene y Confort", price: "Cotización por turno", desc: "Baño de esponja en cama o asistencia en ducha, cuidado de la piel para prevenir escaras y aseo bucal.", icon: <Droplet className="text-[#1976D2]" /> },
+      { name: "Asistencia en Movilidad", price: "Incluido en turno", desc: "Transferencias seguras (cama a silla), cambios posturales programados y apoyo para caminar.", icon: <Activity className="text-[#1976D2]" /> },
+      { name: "Apoyo Nutricional", price: "Incluido en turno", desc: "Ayuda paciente y empática para la alimentación oral o administración de dietas especiales.", icon: <Heart className="text-[#1976D2]" /> },
+      { name: "Acompañamiento", price: "Incluido en turno", desc: "Vigilancia continua para prevenir caídas y brindar soporte emocional activo.", icon: <Users className="text-[#1976D2]" /> }
+    ]
+  },
+  {
+    id: "clinicos",
+    title: "Cuidados Clínicos (Enfermería General)",
+    icon: <Syringe size={24} />,
+    shortDesc: "Procedimientos técnicos por enfermeros titulados: medicamentos, heridas y signos vitales.",
+    img: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=800",
+    marketingCopy: "La precisión médica llevada a tu sala. Enfermeros titulados que garantizan la correcta administración de tratamientos y el monitoreo exacto de la salud del paciente.",
+    subServices: [
+      { name: "Administración de Medicamentos", price: "Desde $350 + IVA", desc: "Aplicación exacta de fármacos vía oral, intramuscular, subcutánea o intravenosa.", icon: <Pill className="text-[#1976D2]" /> },
+      { name: "Manejo de Sondas y Drenajes", price: "$800 + IVA", desc: "Colocación y cuidado estéril de sondas urinarias (Foley), nasogástricas y estomas.", icon: <Stethoscope className="text-[#1976D2]" /> },
+      { name: "Curación de Heridas", price: "$450 - $600 + IVA", desc: "Manejo aséptico de heridas quirúrgicas, úlceras por presión (escaras) y pie diabético.", icon: <ShieldCheck className="text-[#1976D2]" /> },
+      { name: "Monitoreo Clínico", price: "Visita $400 + IVA", desc: "Control profesional de presión arterial, glucosa capilar, saturación y temperatura.", icon: <Activity className="text-[#1976D2]" /> }
+    ]
+  },
+  {
+    id: "especializados",
+    title: "Servicios Especializados",
+    icon: <BriefcaseMedical size={24} />,
+    shortDesc: "Atención avanzada para patologías, post-operatorios, pediatría y geriatría.",
+    img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800",
+    marketingCopy: "Situaciones complejas requieren manos expertas. Contamos con personal certificado para etapas críticas de la vida, asegurando protocolos hospitalarios de alta especialidad en casa.",
+    subServices: [
+      { name: "Cuidados Post-Operatorios", price: "Cotización personalizada", desc: "Atención inmediata tras cirugías mayores o estéticas. Manejo del dolor y prevención de infecciones.", icon: <Stethoscope className="text-[#1976D2]" /> },
+      { name: "Enfermería Geriátrica", price: "Cotización por turno", desc: "Especialistas en demencia, Alzheimer o Parkinson, enfocados en estimulación y seguridad.", icon: <UserCheck className="text-[#1976D2]" /> },
+      { name: "Pediátrica y Neonatal", price: "Cotización personalizada", desc: "Cuidado de recién nacidos, prematuros y asesoría profesional en lactancia materna.", icon: <Baby className="text-[#1976D2]" /> },
+      { name: "Terapia Respiratoria", price: "Desde $600 + IVA", desc: "Nebulizaciones, aspiración de secreciones y manejo de ventilación mecánica asistida.", icon: <Activity className="text-[#1976D2]" /> }
+    ]
+  },
   {
     id: "sueroterapia",
     title: "Sueroterapia a Domicilio",
     icon: <Droplet size={24} />,
     shortDesc: "Revitaliza tu cuerpo desde casa. Absorción al 100% directa al torrente sanguíneo.",
-    img: "https://images.unsplash.com/photo-1512675828443-4f454c42253a?q=80&w=800",
-    marketingCopy: "La sueroterapia es el secreto de la medicina moderna para una recuperación inmediata. Al evitar el sistema digestivo, tu cuerpo absorbe vitaminas, minerales y medicamentos al 100%. Olvídate de las salas de espera; nosotros llevamos la clínica a tu sofá.",
+    img: "https://images.unsplash.com/photo-1631815587646-b85a1bb02246?q=80&w=800",
+    marketingCopy: "El secreto de la medicina moderna para una recuperación inmediata. Al evitar el sistema digestivo, tu cuerpo absorbe vitaminas, minerales y medicamentos al 100%. Olvídate de las salas de espera; nosotros llevamos la clínica a tu sofá.",
     subServices: [
       { name: "Suero Resaca Relief (Cruda)", price: "$1,300 + IVA", desc: "Hidratación profunda, protector gástrico y analgésico potente. Alivio en 45 minutos.", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=400" },
       { name: "Inmuno-Boost (Vitamina C y Zinc)", price: "$1,200 + IVA", desc: "Escudo protector contra virus y fatiga. Sube tus defensas drásticamente.", img: "https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=400" },
@@ -80,46 +122,31 @@ const SERVICIOS_DATA = [
     ]
   },
   {
-    id: "especializada",
-    title: "Enfermería Especializada",
-    icon: <ShieldCheck size={24} />,
-    shortDesc: "Procedimientos técnicos de grado hospitalario realizados en la comodidad de tu hogar.",
-    img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800",
-    marketingCopy: "Evita traslados dolorosos e innecesarios. Nuestro equipo cuenta con la destreza técnica para realizar procedimientos invasivos y monitoreo avanzado con equipo y material 100% estéril. Tu sala se convierte en la mejor habitación de hospital.",
+    id: "gestion",
+    title: "Gestión y Consultoría de Salud",
+    icon: <ClipboardList size={24} />,
+    shortDesc: "Diseñamos el ecosistema de salud completo: planes de cuidado, insumos y enlace médico.",
+    img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800",
+    marketingCopy: "No solo enviamos personal; gestionamos la salud integral. Actuamos como los directores de orquesta de la recuperación de tu familiar, educando y proveyendo todo lo necesario.",
     subServices: [
-      { name: "Electrocardiograma a domicilio CDMX", price: "$1,200 + IVA", desc: "Toma e interpretación básica con equipo portátil de última generación.", icon: <Activity className="text-blue-500" /> },
-      { name: "Colocación de Sondas", price: "$800 + IVA", desc: "Sonda Foley (urinaria), Nasogástrica o cuidados de Gastrostomía. Procedimiento seguro y sin dolor.", icon: <Stethoscope className="text-blue-500" /> },
-      { name: "Retiro de Puntos Quirúrgicos", price: "$400 + IVA", desc: "Retiro de suturas o grapas con valoración de cicatrización.", icon: <CheckCircle className="text-blue-500" /> },
-      { name: "Retiro de Implante Subdérmico", price: "$600 + IVA", desc: "Procedimiento aséptico, rápido y con anestesia local.", icon: <Pill className="text-blue-500" /> },
-      { name: "Enemas a Domicilio", price: "$600 + IVA", desc: "Alivio seguro y profesional para cuadros de estreñimiento severo.", icon: <Droplet className="text-blue-500" /> }
+      { name: "Planes de Cuidado a Medida", price: "Incluido", desc: "Evaluación inicial por un supervisor para diseñar una bitácora de actividades personalizada.", icon: <ClipboardList className="text-[#1976D2]" /> },
+      { name: "Capacitación a Familiares", price: "Asesoría", desc: "Educación práctica sobre cómo movilizar al paciente y detectar signos de alerta.", icon: <Users className="text-[#1976D2]" /> },
+      { name: "Enlace Médico Directo", price: "Incluido", desc: "Comunicación técnica con médicos tratantes para reportar evolución y ajustar tratamientos.", icon: <Phone className="text-[#1976D2]" /> },
+      { name: "Gestión de Insumos", price: "Cotización", desc: "Asesoría y suministro de camas de hospital, oxígeno, sillas de ruedas y material de curación.", icon: <ShieldCheck className="text-[#1976D2]" /> }
     ]
   },
   {
-    id: "general",
-    title: "Atención General e Inyecciones",
-    icon: <Syringe size={24} />,
-    shortDesc: "Administración de medicamentos, inyecciones y cuidados básicos a tu puerta.",
-    img: "https://images.unsplash.com/photo-1584308666744-24d59b298707?q=80&w=800",
-    marketingCopy: "La adherencia a un tratamiento médico es vital. Si necesitas que un profesional administre tus medicamentos o los de tu familia de manera exacta y sin dolor, estamos a una llamada de distancia. Cobertura en toda la CDMX.",
+    id: "modalidades",
+    title: "Modalidades de Cobertura",
+    icon: <Clock size={24} />,
+    shortDesc: "Flexibilidad total: desde visitas únicas hasta cobertura ininterrumpida 24/7.",
+    img: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=800",
+    marketingCopy: "La diferencia de Curae es nuestro respaldo institucional. Garantizamos cubrir faltas, supervisamos la calidad y nos adaptamos exactamente a tus horarios y presupuesto.",
     subServices: [
-      { name: "Inyecciones a domicilio CDMX", price: "$250 - $350 + IVA", desc: "Aplicación intramuscular o subcutánea sin dolor. (Requiere receta médica).", icon: <Syringe className="text-blue-500" /> },
-      { name: "Ministración de Medicamentos", price: "$400 + IVA", desc: "Control de pastilleros y administración intravenosa de antibióticos.", icon: <Pill className="text-blue-500" /> },
-      { name: "Curación de Heridas", price: "$450 - $600 + IVA", desc: "Limpieza profunda de heridas simples o pie diabético para evitar infecciones.", icon: <Heart className="text-blue-500" /> },
-      { name: "Consulta Médica a Domicilio", price: "$900 + IVA", desc: "Valoración general por médico titulado asociado a nuestra agencia.", icon: <Stethoscope className="text-blue-500" /> }
-    ]
-  },
-  {
-    id: "cuidados",
-    title: "Cuidado de Pacientes (Turnos)",
-    icon: <UserCheck size={24} />,
-    shortDesc: "Enfermeros auxiliares y generales para cuidado de adultos mayores o post-operatorios.",
-    img: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=800",
-    marketingCopy: "Sabemos lo agotador que es cuidar a un ser querido. Recupera tu tranquilidad y tu descanso dejando la salud de tu familiar en manos de enfermeros titulados y empáticos. Manejamos cuidados paliativos, geriatría y recuperación quirúrgica.",
-    subServices: [
-      { name: "Turno 8 Horas (Enf. General)", price: "$900 + IVA", desc: "Ideal para cobertura diurna, control de medicamentos y signos vitales.", icon: <Clock className="text-blue-500" /> },
-      { name: "Turno 12 Horas (Nocturno/Diurno)", price: "$1,300 + IVA", desc: "Vigilancia continua, prevención de úlceras y asistencia en baño.", icon: <Clock className="text-blue-500" /> },
-      { name: "Turno 24 Horas", price: "$2,200 + IVA", desc: "Cuidado intensivo e ininterrumpido en el hogar.", icon: <Clock className="text-blue-500" /> },
-      { name: "Baño de Esponja a Domicilio", price: "$500 + IVA", desc: "Higiene completa en cama para pacientes inmovilizados, cuidando su pudor y confort.", icon: <Droplet className="text-blue-500" /> }
+      { name: "Por Visita (Procedimientos)", price: "Desde $350 + IVA", desc: "Acudimos puntualmente para inyecciones, curaciones, instalación de sondas o sueros.", icon: <Zap className="text-[#1976D2]" /> },
+      { name: "Turnos de Guardia (8h / 12h)", price: "Desde $900 + IVA", desc: "Ideal para cobertura diurna o vigilancia nocturna, asegurando el descanso de la familia.", icon: <Clock className="text-[#1976D2]" /> },
+      { name: "Cuidado 24/7", price: "Desde $2,200 + IVA", desc: "Equipos rotativos altamente coordinados para que el paciente nunca esté solo.", icon: <ShieldCheck className="text-[#1976D2]" /> },
+      { name: "Respaldo Curae", price: "Garantía", desc: "Sustitución inmediata en caso de imprevistos y supervisión continua de la Directora Clínica.", icon: <Award className="text-[#1976D2]" /> }
     ]
   }
 ];
@@ -155,17 +182,20 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [enviado, setEnviado] = useState(false);
   
-  // Estados para Modales
-  const [activeService, setActiveService] = useState<any>(null);
-  const [activeBenefit, setActiveBenefit] = useState<any>(null);
+  // Estados para expansiones suaves (Acordeón)
+  const [expandedService, setExpandedService] = useState<number | null>(null);
+  const [expandedBenefit, setExpandedBenefit] = useState<number | null>(null);
+  const [isNosotrosOpen, setIsNosotrosOpen] = useState(false);
 
   const whatsappLink = `https://wa.me/${CONTACT_INFO.phoneRaw}?text=Hola%20Curae,%20solicito%20información%20y%20cotización`;
 
-  // Efecto para bloquear scroll cuando hay modal abierto
-  useEffect(() => {
-    if (activeService || activeBenefit) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'unset';
-  }, [activeService, activeBenefit]);
+  const toggleService = (idx: number) => {
+    setExpandedService(expandedService === idx ? null : idx);
+  };
+
+  const toggleBenefit = (idx: number) => {
+    setExpandedBenefit(expandedBenefit === idx ? null : idx);
+  };
 
   return (
     <div className="font-sans text-gray-900 scroll-smooth bg-gray-50">
@@ -183,7 +213,7 @@ export default function Home() {
           <ul className="hidden md:flex items-center gap-8">
             <li><a href="#servicios" className="hover:text-[#1976D2] font-semibold text-sm transition-colors">Catálogo de Servicios</a></li>
             <li><a href="#ventajas" className="hover:text-[#1976D2] font-semibold text-sm transition-colors">Ventajas</a></li>
-            <li><a href="#nosotros" className="hover:text-[#1976D2] font-semibold text-sm transition-colors">Nosotros</a></li>
+            <li><a href="#nosotros" className="hover:text-[#1976D2] font-semibold text-sm transition-colors">Directorio</a></li>
             <li>
               <a href="#contacto" className="bg-[#1976D2] text-white font-bold rounded-lg px-6 py-2.5 shadow-lg hover:bg-[#1565C0] hover:scale-105 transition-all">
                 Cotizar ahora
@@ -199,7 +229,7 @@ export default function Home() {
         <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-64 border-t' : 'max-h-0'}`}>
           <div className="bg-white p-6 flex flex-col gap-4 text-center font-bold shadow-inner">
             <a href="#servicios" onClick={() => setIsMenuOpen(false)}>Servicios</a>
-            <a href="#nosotros" onClick={() => setIsMenuOpen(false)}>Nosotros</a>
+            <a href="#nosotros" onClick={() => setIsMenuOpen(false)}>Directorio</a>
             <a href="#contacto" onClick={() => setIsMenuOpen(false)} className="text-[#1976D2]">Contacto</a>
           </div>
         </div>
@@ -221,7 +251,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="#servicios" className="px-8 py-4 bg-white text-[#0D47A1] border-2 border-blue-100 font-bold rounded-xl shadow-md hover:border-[#1976D2] transition-all flex items-center gap-2">
-                Ver Catálogo de Precios <ArrowRight size={18} />
+                Ver Catálogo de Servicios <ArrowRight size={18} />
               </a>
               <a href={whatsappLink} className="px-8 py-4 bg-[#1976D2] text-white font-bold rounded-xl shadow-xl hover:bg-[#0D47A1] transition-all transform hover:scale-105 flex items-center gap-2">
                 Agendar Vía WhatsApp <Zap size={18}/>
@@ -229,38 +259,107 @@ export default function Home() {
             </div>
           </div>
         </FadeInSection>
-        {/* Background effects */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-5xl bg-blue-300 rounded-full filter blur-[120px] opacity-20 -z-10"></div>
       </section>
 
-      {/* --- CATÁLOGO DE SERVICIOS INTERACTIVO --- */}
+      {/* --- CATÁLOGO DE SERVICIOS INTERACTIVO (ACCORDION) --- */}
       <section id="servicios" className="py-24 px-6 bg-white relative">
         <FadeInSection>
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-black text-[#0D47A1] mb-4">Catálogo de Servicios</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto text-lg">Haz clic en cualquier categoría para conocer a detalle nuestros procedimientos, beneficios y tarifas actualizadas.</p>
+              <p className="text-gray-600 max-w-2xl mx-auto text-lg">Haz clic en cualquier categoría para desplegar a detalle nuestros procedimientos, beneficios y tarifas actualizadas.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
               {SERVICIOS_DATA.map((srv, idx) => (
                 <div 
                   key={idx} 
-                  onClick={() => setActiveService(srv)}
-                  className="group bg-white rounded-[2rem] border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer overflow-hidden flex flex-col"
+                  onClick={() => toggleService(idx)}
+                  className={`group bg-white rounded-[2rem] border transition-all duration-500 transform cursor-pointer overflow-hidden flex flex-col ${expandedService === idx ? 'border-[#1976D2] shadow-2xl scale-[1.02] ring-4 ring-blue-50 z-10' : 'border-gray-200 shadow-lg hover:shadow-xl hover:-translate-y-1'}`}
                 >
-                  <div className="h-48 relative overflow-hidden">
+                  {/* Tarjeta Superior (Siempre visible) */}
+                  <div className="h-48 relative overflow-hidden shrink-0">
                     <img src={srv.img} alt={srv.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0D47A1]/90 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 text-white p-2 bg-white/20 backdrop-blur-sm rounded-xl">
                       {srv.icon}
                     </div>
                   </div>
-                  <div className="p-6 flex flex-col flex-grow">
+                  <div className="p-6 bg-white">
                     <h3 className="text-xl font-bold text-[#0D47A1] mb-2">{srv.title}</h3>
-                    <p className="text-sm text-gray-600 mb-6 flex-grow">{srv.shortDesc}</p>
-                    <div className="mt-auto flex items-center justify-between text-[#1976D2] font-bold text-sm group-hover:text-[#0D47A1]">
-                      Ver catálogo y precios <ArrowRight size={16} className="transform transition-transform group-hover:translate-x-2" />
+                    <p className="text-sm text-gray-600 mb-4">{srv.shortDesc}</p>
+                    <div className="flex items-center justify-between text-[#1976D2] font-bold text-sm">
+                      {expandedService === idx ? 'Ocultar detalles' : 'Ver catálogo y precios'} 
+                      {expandedService === idx ? <ChevronUp size={20} className="animate-pulse"/> : <ChevronDown size={20} />}
+                    </div>
+                  </div>
+
+                  {/* Contenido Expandible (Acordeón) */}
+                  <div className={`transition-all duration-700 ease-in-out bg-gray-50 border-t border-gray-100 ${expandedService === idx ? 'max-h-[1500px] opacity-100 p-6' : 'max-h-0 opacity-0 p-0 overflow-hidden'}`}>
+                    <p className="text-gray-700 text-sm leading-relaxed mb-6 border-l-4 border-[#1976D2] pl-3 italic">
+                      {srv.marketingCopy}
+                    </p>
+                    <div className="space-y-4">
+                      {srv.subServices.map((sub: any, subIdx: number) => (
+                        <div key={subIdx} className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex gap-4 items-start hover:border-blue-200 transition-colors">
+                          {sub.img ? (
+                            <img src={sub.img} alt={sub.name} className="w-16 h-16 object-cover rounded-lg shrink-0 border border-gray-100" />
+                          ) : (
+                            <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
+                              {sub.icon}
+                            </div>
+                          )}
+                          <div>
+                            <h4 className="font-bold text-gray-900 text-sm mb-1">{sub.name}</h4>
+                            <p className="text-[#1976D2] font-black text-xs mb-1">{sub.price}</p>
+                            <p className="text-xs text-gray-500 leading-relaxed">{sub.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <a href={whatsappLink} onClick={(e) => e.stopPropagation()} className="mt-6 w-full bg-[#1976D2] text-white font-bold py-3 rounded-xl shadow hover:bg-[#0D47A1] transition-all flex items-center justify-center gap-2 text-sm">
+                      <MessageSquare size={16} /> Solicitar este servicio
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeInSection>
+      </section>
+
+      {/* --- WHY CHOOSE US (VENTAJAS INLINE) --- */}
+      <section id="ventajas" className="py-24 px-6 bg-[#0D47A1] text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full filter blur-[100px] opacity-30"></div>
+        <FadeInSection delay={200}>
+          <div className="max-w-6xl mx-auto relative z-10">
+            <h2 className="text-3xl md:text-5xl font-black text-center mb-16 text-white">El Estandar Curae</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+              {BENEFICIOS_DATA.map((item, i) => (
+                <div 
+                  key={i} 
+                  onClick={() => toggleBenefit(i)}
+                  className={`bg-white/10 backdrop-blur-md rounded-3xl border transition-all duration-500 cursor-pointer overflow-hidden ${expandedBenefit === i ? 'border-teal-400 bg-white/20' : 'border-white/20 hover:bg-white/20'}`}
+                >
+                  <div className="p-8 flex items-start gap-6">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-colors ${expandedBenefit === i ? 'bg-teal-400 text-[#0D47A1]' : 'bg-[#1976D2] text-white'}`}>
+                      <CheckCircle size={28} />
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="text-xl font-bold mb-2">{item.t}</h3>
+                      <p className="text-blue-100 text-sm leading-relaxed">{item.short}</p>
+                      
+                      {/* Expansión del beneficio */}
+                      <div className={`transition-all duration-700 ease-in-out ${expandedBenefit === i ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                        <div className="w-12 h-1 bg-teal-400 mb-4 rounded-full"></div>
+                        <p className="text-sm text-white/90 leading-relaxed font-light">{item.long}</p>
+                      </div>
+                      
+                      <div className="mt-4 text-teal-300 text-xs font-bold flex items-center gap-1">
+                        {expandedBenefit === i ? 'Cerrar detalle' : 'Leer más'} 
+                        {expandedBenefit === i ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -270,87 +369,62 @@ export default function Home() {
         </FadeInSection>
       </section>
 
-      {/* --- WHY CHOOSE US (VENTAJAS) --- */}
-      <section id="ventajas" className="py-24 px-6 bg-[#0D47A1] text-white overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full filter blur-[100px] opacity-30"></div>
-        <FadeInSection delay={200}>
-          <div className="max-w-6xl mx-auto relative z-10">
-            <h2 className="text-3xl md:text-5xl font-black text-center mb-16 text-white">El Estandar Curae</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {BENEFICIOS_DATA.map((item, i) => (
-                <div 
-                  key={i} 
-                  onClick={() => setActiveBenefit(item)}
-                  className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer group hover:scale-105"
-                >
-                  <div className="bg-[#1976D2] w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white transition-colors">
-                    <CheckCircle size={28} className="text-white group-hover:text-[#1976D2]" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{item.t}</h3>
-                  <p className="text-blue-100 text-sm leading-relaxed mb-6">{item.short}</p>
-                  <span className="text-teal-300 text-xs font-bold flex items-center gap-1">Leer más <ChevronDown size={14}/></span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </FadeInSection>
-      </section>
+      {/* --- NOSOTROS (OCULTO/EXPANDIBLE) --- */}
+      <section id="nosotros" className="py-24 px-6 bg-white overflow-hidden text-center">
+        <FadeInSection>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-black text-[#0D47A1] mb-6">Nuestro Respaldo Médico</h2>
+            <p className="text-gray-600 text-lg mb-8">Conoce a la profesional que diseña, supervisa y garantiza la excelencia de cada servicio que llega a tu hogar.</p>
+            
+            <button 
+              onClick={() => setIsNosotrosOpen(!isNosotrosOpen)}
+              className="bg-white border-2 border-[#1976D2] text-[#1976D2] font-bold py-4 px-8 rounded-xl hover:bg-blue-50 transition-all flex items-center justify-center gap-3 mx-auto shadow-md"
+            >
+              <Award size={20} />
+              {isNosotrosOpen ? 'Ocultar Perfil' : 'Ver Perfil de la Directora Clínica'}
+              {isNosotrosOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            </button>
 
-      {/* --- NOSOTROS (CV ALICIA) --- */}
-      <section id="nosotros" className="py-24 px-6 bg-white overflow-hidden">
-        <FadeInSection direction="left">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col lg:flex-row gap-16 items-center">
-              {/* Foto Alicia */}
-              <div className="w-full lg:w-5/12 relative flex justify-center">
-                <div className="absolute inset-0 bg-[#1976D2] rounded-[3rem] transform -rotate-6 opacity-10"></div>
-                <img 
-                  src="/alicia.jpg" 
-                  className="relative z-10 w-full max-w-sm rounded-[2.5rem] shadow-2xl border-8 border-white object-cover aspect-[4/5] hover:scale-105 transition-transform duration-700"
-                  alt="Enf. Alicia Rentería - Curae"
-                  onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1559839734-2b71f1536783?q=80&w=600"; }}
-                />
-                <div className="absolute -bottom-6 -right-2 md:-right-6 bg-white p-4 rounded-2xl shadow-xl z-20 flex items-center gap-4 border border-gray-100 animate-bounce">
-                  <div className="bg-blue-50 p-3 rounded-xl text-[#1976D2]"><Award size={28}/></div>
-                  <div>
-                    <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Directora Clínica</p>
-                    <p className="font-black text-[#0D47A1] text-lg">Enf. Alicia Rentería</p>
+            {/* Expansión del CV */}
+            <div className={`transition-all duration-1000 ease-in-out text-left ${isNosotrosOpen ? 'max-h-[2000px] opacity-100 mt-16' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+              <div className="flex flex-col md:flex-row gap-12 items-center bg-gray-50 p-8 md:p-12 rounded-[3rem] border border-gray-100 shadow-inner relative">
+                
+                <div className="w-full md:w-5/12 relative flex justify-center shrink-0">
+                  <div className="absolute inset-0 bg-[#1976D2] rounded-[3rem] transform rotate-3 opacity-10"></div>
+                  <img 
+                    src="/alicia.jpg" 
+                    className="relative z-10 w-full max-w-[280px] rounded-[2rem] shadow-xl border-8 border-white object-cover aspect-[4/5]"
+                    alt="Enf. Alicia Rentería - Curae"
+                    onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1559839734-2b71f1536783?q=80&w=600"; }}
+                  />
+                  <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-xl shadow-lg z-20 flex items-center gap-3 border border-gray-100">
+                    <div className="bg-blue-50 p-2 rounded-lg text-[#1976D2]"><Award size={20}/></div>
+                    <div>
+                      <p className="font-black text-[#0D47A1] text-sm">Enf. Alicia Rentería</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              
-              {/* Info CV */}
-              <div className="w-full lg:w-7/12">
-                <h2 className="text-3xl md:text-5xl font-black text-[#0D47A1] mb-6 leading-tight">
-                  La enfermería es el <span className="text-[#1976D2]">arte de cuidar la vida</span>
-                </h2>
                 
-                <div className="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-inner relative">
-                  <Stethoscope className="absolute top-6 right-6 text-gray-200" size={60} />
-                  <p className="text-gray-700 leading-relaxed mb-6 relative z-10 text-lg">
-                    "Mi compromiso es garantizar que cada paciente reciba atención de grado hospitalario en el entorno que más ama: su propio hogar, rodeado de su familia."
+                <div className="w-full md:w-7/12 space-y-5 text-gray-700">
+                  <Stethoscope className="text-gray-300 mb-2" size={40} />
+                  <p className="text-xl font-light italic text-[#0D47A1] leading-relaxed mb-6">
+                    "Mi compromiso es garantizar que cada paciente reciba atención de grado hospitalario en el entorno que más ama: su propio hogar."
                   </p>
                   
-                  <div className="space-y-4 text-sm text-gray-600 relative z-10">
+                  <div className="space-y-4 text-sm bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
                     <div className="flex gap-3 items-start">
                       <CheckCircle className="text-[#1976D2] shrink-0 mt-0.5" size={18}/>
                       <p><strong>Formación de Excelencia:</strong> Licenciada en Enfermería por UNITEC, actualmente cursando la Maestría en Dirección de Organizaciones en Salud.</p>
                     </div>
                     <div className="flex gap-3 items-start">
                       <CheckCircle className="text-[#1976D2] shrink-0 mt-0.5" size={18}/>
-                      <p><strong>Experiencia Crítica:</strong> Amplia trayectoria clínica en Medicina Interna, Urgencias, Quirófano y UCI Pediátrica en hospitales de alta demanda (Hospital General Homeopático, 'Miguel Hidalgo', etc).</p>
+                      <p><strong>Experiencia Crítica:</strong> Amplia trayectoria en Medicina Interna, Urgencias, Quirófano y UCI Pediátrica en hospitales de alta demanda (H. General Homeopático, Materno Infantil 'Miguel Hidalgo').</p>
                     </div>
                     <div className="flex gap-3 items-start">
                       <CheckCircle className="text-[#1976D2] shrink-0 mt-0.5" size={18}/>
-                      <p><strong>Certificaciones:</strong> Cédula Profesional vigente, Educación en Diabetes y manejo avanzado de pacientes críticos y post-quirúrgicos.</p>
+                      <p><strong>Certificaciones:</strong> Cédula Profesional vigente, Educación en Diabetes e Informática aplicada a la salud.</p>
                     </div>
                   </div>
-                </div>
-
-                <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                  <a href={whatsappLink} className="bg-[#1976D2] text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-[#0D47A1] transition-all transform hover:-translate-y-1 text-center">
-                    Contactar a la Directora
-                  </a>
                 </div>
               </div>
             </div>
@@ -426,89 +500,6 @@ export default function Home() {
         <p className="font-bold text-gray-800 uppercase tracking-widest text-xs">Curae | Agencia de Enfermería Profesional</p>
         <p className="text-gray-400 text-[10px] mt-4">© {new Date().getFullYear()} CDMX, México. Todos los derechos reservados.</p>
       </footer>
-
-      {/* ================= MODALES ================= */}
-      
-      {/* 1. Modal de Servicios Detallados */}
-      {activeService && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300">
-          <div className="bg-white rounded-[2rem] w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl relative transform transition-all duration-300 scale-100 opacity-100 animate-in zoom-in-95">
-            <button 
-              onClick={() => setActiveService(null)} 
-              className="absolute top-4 right-4 bg-gray-100 text-gray-500 hover:text-red-500 hover:bg-red-50 p-2 rounded-full transition-colors z-10"
-            >
-              <X size={24} />
-            </button>
-            
-            <div className="h-64 relative">
-              <img src={activeService.img} alt={activeService.title} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent flex items-end p-8">
-                <div>
-                  <div className="inline-block bg-[#1976D2] text-white p-2 rounded-lg mb-3">{activeService.icon}</div>
-                  <h2 className="text-3xl md:text-4xl font-black text-white">{activeService.title}</h2>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-8">
-              <p className="text-gray-700 text-lg leading-relaxed mb-8 border-l-4 border-[#1976D2] pl-4 italic bg-blue-50/50 p-4 rounded-r-xl">
-                {activeService.marketingCopy}
-              </p>
-
-              <h3 className="text-xl font-bold text-[#0D47A1] mb-6 border-b pb-2">Catálogo de Procedimientos y Tarifas</h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {activeService.subServices.map((sub: any, idx: number) => (
-                  <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex gap-4 items-start">
-                    {sub.img ? (
-                      <img src={sub.img} alt={sub.name} className="w-20 h-20 object-cover rounded-xl shrink-0" />
-                    ) : (
-                      <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-                        {sub.icon}
-                      </div>
-                    )}
-                    <div>
-                      <h4 className="font-bold text-gray-900 leading-tight mb-1">{sub.name}</h4>
-                      <p className="text-[#1976D2] font-black text-sm mb-2">{sub.price}</p>
-                      <p className="text-xs text-gray-500 leading-relaxed">{sub.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-10 flex flex-col items-center border-t pt-8">
-                <p className="text-sm text-gray-500 mb-4">* Precios sujetos a cambios. Cobertura en toda la CDMX.</p>
-                <a href={whatsappLink} className="bg-[#25D366] text-white font-bold py-4 px-10 rounded-xl shadow-lg hover:bg-green-600 transition-all transform hover:-translate-y-1 flex items-center gap-2">
-                  <MessageSquare size={20} /> Agendar este servicio
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* 2. Modal de Ventajas (Why Choose Us) */}
-      {activeBenefit && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#0D47A1] rounded-[2rem] w-full max-w-lg p-8 shadow-2xl relative text-center border border-blue-400/30 transform transition-all duration-300 scale-100 animate-in slide-in-from-bottom-10">
-            <button onClick={() => setActiveBenefit(null)} className="absolute top-4 right-4 text-blue-200 hover:text-white transition-colors">
-              <X size={24} />
-            </button>
-            <div className="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-              <ShieldCheck size={40} className="text-[#1976D2]" />
-            </div>
-            <h3 className="text-3xl font-black text-white mb-2">{activeBenefit.t}</h3>
-            <div className="w-16 h-1 bg-teal-400 mx-auto mb-6 rounded-full"></div>
-            <p className="text-lg text-blue-100 leading-relaxed mb-8">
-              {activeBenefit.long}
-            </p>
-            <button onClick={() => setActiveBenefit(null)} className="w-full bg-white text-[#0D47A1] font-bold py-4 rounded-xl hover:bg-blue-50 transition-colors">
-              Entendido
-            </button>
-          </div>
-        </div>
-      )}
-
     </div>
   );
 }
