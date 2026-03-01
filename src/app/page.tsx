@@ -126,7 +126,7 @@ const SERVICIOS_DATA = [
     title: "Consultoría y Resolución de Dudas",
     icon: <Video size={24} />,
     shortDesc: "Orientación experta presencial o virtual para resolver tus inquietudes médicas.",
-    img: "https://images.unsplash.com/photo-1537368910025-7028a609b139?q=80&w=800",
+    img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800",
     marketingCopy: "La información médica puede ser abrumadora. Evita búsquedas peligrosas en internet y permítenos guiarte. Nuestros expertos resolverán cualquier duda sobre el cuidado, manejo de equipo o síntomas de tu familiar, dándote paz mental para tomar decisiones seguras.",
     subServices: [
       { name: "Asesoría en línea (Telemedicina)", price: "$300 + IVA", desc: "Videollamada para revisión de estudios, resolución de dudas y orientación médica primaria.", icon: <Video className="text-[#1976D2]" /> },
